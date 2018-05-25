@@ -3,6 +3,7 @@ function curvature = Compute_Curvature(centerline)
 
 centerline_num = length(centerline);
 centerline_length = sqrt(sum(sum((centerline(2:end,:) - centerline(1:end-1,:)).^2,2)));
+curvature = zeros(length(centerline),1);
 
 x = centerline(:,1);
 y = centerline(:,2);
@@ -12,7 +13,10 @@ diff2_x = -diff(diff_x,1);
 diff2_y = -diff(diff_y,1);
 diff_x = diff_x(1:end-1);
 diff_y = diff_y(1:end-1);
-curvature = (diff_x.*diff2_y - diff2_x.*diff_y)./(diff_x.^2 + diff_y.^2).^1.5;
+curvature(2:end-1) = (diff_x.*diff2_y - diff2_x.*diff_y)./(diff_x.^2 + diff_y.^2).^1.5;
+curvature(1) = curvature(2);
+curvature(end) = curvature(end-1);
+
 curvature = smooth(curvature,floor(0.05*centerline_num));
 
 % nomalize the curvature with the centerline length

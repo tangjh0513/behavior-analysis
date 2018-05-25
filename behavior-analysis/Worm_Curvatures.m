@@ -8,7 +8,7 @@ for i = 1:frame_num
     centerline = centerline_data.centerline;
 	if i==1
 		% allocate spaces
-		curvatures = zeros(frame_num, length(centerline)-2);
+		curvatures = zeros(frame_num, length(centerline));
 	end
 	curvatures(i,:) = Compute_Curvature(centerline);
 end
