@@ -3,7 +3,7 @@ function worm_seg(Image_Folder,Worm_Thres,Worm_Area,OutputFolder)
 
 % Worm_Thres = 225; % the gray intensity to segment worm
 % Worm_Area = 2000;
-Low_Thres = 30;
+Low_Thres = 10;
 Grad_Threshold = 5;
 BoundaryWidth = 50;
 WormRegionFolder = [OutputFolder 'worm_region\'];
