@@ -1,6 +1,6 @@
 function angle = calc_crawl_angle(centerline)
 % Calculate the orientation of worm cralwing
-% point content [y,x]
+% point format [y,x]
 
 head = centerline(1,:);
 tail = centerline(length(centerline),:);

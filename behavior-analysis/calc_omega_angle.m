@@ -17,7 +17,13 @@ crawling_angles = zeros(num,1);
 
 for i = start_index:end_index
     % before calculate worm bend angle, make sure all centerlines are correct
-    data = load([Centerline_Folder num2str(i) '.mat']);
+    centerline_name = [Centerline_Folder num2str(i) '.mat'];
+    if ~exist(centerline_name,'file')
+        crawling_angles(i-start_index+1) = crawling_angles(i-start_index);
+        continue;
+    end
+    
+    data = load(centerline_name);
     centerline = data.centerline;
     worm_angles(i-start_index+1) = calc_bend_angle(centerline);
     crawling_angles(i-start_index+1) = calc_crawl_angle(centerline);

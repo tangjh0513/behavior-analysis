@@ -5,8 +5,8 @@ centerline_num = length(centerline);
 centerline_length = sqrt(sum(sum((centerline(2:end,:) - centerline(1:end-1,:)).^2,2)));
 curvature = zeros(length(centerline),1);
 
-x = centerline(:,1);
-y = centerline(:,2);
+x = centerline(:,2);
+y = centerline(:,1);
 diff_x = diff(x,1);
 diff_y = diff(y,1);
 diff2_x = -diff(diff_x,1);
