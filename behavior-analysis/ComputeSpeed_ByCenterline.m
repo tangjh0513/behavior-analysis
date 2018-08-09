@@ -13,7 +13,7 @@ worm_pos = zeros(length(frame_seq),2);
 for i=1:length(frame_seq)
     centerline_name = [Centerline_Folder num2str(frame_seq(i)) '.mat'];
     if ~exist(centerline_name,'file')
-        worm_pos(i,:) = [nan, nan];
+        worm_pos(i,:) = worm_pos(i-1,:);
         continue;
     end
     

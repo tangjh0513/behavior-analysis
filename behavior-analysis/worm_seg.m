@@ -31,12 +31,15 @@ for i=Start_Index:End_Index
 	end
 
 	[binary_worm_region, Worm_Area, pos, worm_region] = worm_seg_single(img, Worm_Thres, Worm_Area);
-    if abs(Init_Worm_Area - Worm_Area) > Frame_Skip_Thres
+    if abs(Init_Worm_Area - Worm_Area) > Init_Worm_Area*Frame_Skip_Thres
+        disp(['Skip image: ' num2str(i)]);
         Skip_List_Index = Skip_List_Index + 1;
         Skip_List(Skip_List_Index) = i;
         Worm_Area = Init_Worm_Area;
+        worm_pos(i-Start_Index+1,:) = worm_pos(i-Start_Index,:);
+    else
+        worm_pos(i-Start_Index+1,:) = pos;
     end
-	worm_pos(i-Start_Index+1,:) = pos;
 	worm_regions(i-Start_Index+1,:) = worm_region;
 
     % save the binary worm region
@@ -51,12 +54,10 @@ worm_pos = WormPos_Filtering(worm_pos);
 save([OutputFolder 'WormRegionPos.mat'],'worm_pos','worm_regions','raw_worm_pos','Skip_List');
 
 % write skip list into backbone folder
-if ~isempty(Skip_List)
-    file = fopen([OutputFolder 'backbone\skiplist.txt']);
+file = fopen([OutputFolder 'backbone\skiplist.txt'],'wt');
     for i=1:length(Skip_List)
         fprintf(file,'%d\n',Skip_List(i));
     end
-    fclose(file);
-end
+fclose(file);
 
 end

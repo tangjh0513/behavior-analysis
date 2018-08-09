@@ -29,7 +29,7 @@ new_binary_img(BoundaryWidth+1:image_height-BoundaryWidth, BoundaryWidth+1:image
     binary_whole_img(BoundaryWidth+1:image_height-BoundaryWidth, BoundaryWidth+1:image_width-BoundaryWidth);
 
 % get worm region
-[binary_image,region_range, area] =...
+[binary_image,region_range] =...
     Denoise_And_Worm_Locate(new_binary_img, Worm_Area);
 
 % calculate worm position by worm centroid. Position: [y,x]
@@ -91,5 +91,5 @@ end
 
 binary_worm_region = binary_image(row_min:row_max,col_min:col_max);
 worm_region = [row_min, row_max, col_min, col_max];
-
+area = sum(binary_worm_region(:)); % update worm area
 end
