@@ -1,5 +1,6 @@
 function worm_seg(Image_Folder,Worm_Thres,Worm_Area,OutputFolder)
-% segment worm region
+% segment worm region and determine whether skip this image by comparing
+% the area with the first image
 
 config;
 
