@@ -41,7 +41,7 @@ margin = 4;
 row_min = max(min(worm_row) - margin, 1);
 row_max = min(max(worm_row) + margin, height);
 column_min = max(min(worm_column) - margin, 1);
-column_max = min(max(worm_column) + margin, height);
+column_max = min(max(worm_column) + margin, width);
 
 % 截取线虫所在区域，并保存其坐标范围
 binary_image = binary_image_whole;
