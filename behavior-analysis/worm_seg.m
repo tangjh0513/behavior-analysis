@@ -49,7 +49,7 @@ end
 
 Skip_List = Skip_List(1:Skip_List_Index);
 raw_worm_pos = worm_pos;
-worm_pos = WormPos_Filtering(worm_pos);
+% worm_pos = WormPos_Filtering(worm_pos);
 
 % save worm regions and positions
 save([OutputFolder 'WormRegionPos.mat'],'worm_pos','worm_regions','raw_worm_pos','Skip_List');
