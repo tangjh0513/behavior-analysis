@@ -2,7 +2,7 @@ function curvature = Compute_Curvature(centerline)
 % Calculate normalized curvature of worm centerline
 
 centerline_num = length(centerline);
-centerline_length = sqrt(sum(sum((centerline(2:end,:) - centerline(1:end-1,:)).^2,2)));
+centerline_length = sum(sqrt(sum((centerline(2:end,:) - centerline(1:end-1,:)).^2,2)));
 curvature = zeros(length(centerline),1);
 
 x = centerline(:,2);
