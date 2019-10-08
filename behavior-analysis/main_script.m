@@ -25,7 +25,7 @@ start_index = 0;
 end_index = Image_Num-1;
 Data_Folder = '';
 
-Calcuate_Centerline(WormRegion_Folder, Backbone_Folder, start_index, end_index);
+Calculate_Centerline(WormRegion_Folder, Backbone_Folder, start_index, end_index);
 Get_Centerline(Data_Folder);
 
 % Check centerline
